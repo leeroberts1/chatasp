@@ -20,7 +20,7 @@ document.onkeydown=keypresed;
 //-->
 </script>
 <body background="imagens/fundoadm.gif" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onUnload="MM_openBrWindow('chat_sai.asp?act=saiu2&apelido=<%=apelido%>&cor=<%=cor%>','xx','width=100,height=100')">
-<table width="100%" height="100%" border="1" cellpadding="0" cellspacing="0">
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr> 
     <td height="80" colspan="2"> <iframe frameborder="0" width="100%" height="100%" scrolling="no" src="chat_topo.asp" allowtransparency="true" name="topo"></iframe> 
     </td>
