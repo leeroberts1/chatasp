@@ -1,20 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>CHATASP - Bate Papo</title>
+	<link href="chat_css.css" rel="stylesheet" type="text/css">
 <!--#include file="chat_conecta.asp"-->
 <!--#include file="chat_funcoes.asp"-->
-<!-- #include file="captcha/CAPTCHA_setup.asp" -->
 <%
 
-application("site")="super bareta"
-site="super bareta"
+application("site")="CHATASP - FREE CHAT ASP"
+site="CHATASP - FREE CHAT ASP"
 id=session.SessionID
 response.write verificauser()
+
 sql="delete * from chat_users where session_id="&id
 conn.execute(sql)
 
 if request.querystring("act")=1 then
-%>
-<!-- #include file="CAPTCHA/CAPTCHA_process_form.asp" -->
-<%
-If blnCAPTCHAcodeCorrect Then 
+
+
 apelido=request.form("apelido")
 
 if apelido="" then
@@ -55,32 +59,25 @@ rs.close
 set rs=nothing
 
 end if
-
-end if
 %>
-<title><%=site%> - Bate Papo</title>
-<link href="chat_css.css" rel="stylesheet" type="text/css">
-
-<body background="imagens/fundoadm.gif" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+</head>
+<body>
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td align="center" valign="middle">
 	<form name="entrar"  method="post" action="chat_index.asp?act=1">
         <table width="240" border="0" cellspacing="0" cellpadding="0" class="tabelas">
           <tr valign="middle"> 
-            <td width="76"> <div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Apelido 
-                :</font></div></td>
+            <td width="76" class="texto"> <div align="right">Apelido :</div></td>
             <td width="164" height="25"> <input type="text" name="apelido" class="inputbusca"><br>
-              <strong><font color="#FF0000" size="2" face="Arial, Helvetica, sans-serif">
-              <% if request.QueryString("e")=1 then
-response.write "Digite um apelido"
+              
+<% if request.QueryString("e")=1 then
+	response.write "Digite um apelido"
 end if
-%>
-              </font></strong></td>
+%>            </td>
           </tr>
           <tr valign="middle"> 
-            <td> <div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Cor 
-                :</font></div></td>
+            <td class="texto"> <div align="right">Cor :</div></td>
             <td height="25"> <select name="cor" style="width: 100px;">
                 <%
 Dim vCores, vCor, vX, vY, vZ, vColor
@@ -102,21 +99,22 @@ next
               </select> </td>
           </tr>
           <tr> 
-            <td height="12" colspan="2"> <div align="center">
-			<!--#include file="CAPTCHA/CAPTCHA_form_inc.asp" -->
-			</div></td>
+            <td height="12" colspan="2">&nbsp;			</td>
           </tr>
           <tr>
-            <td height="12" colspan="2"><div align="center">
-                <input type="submit" name="Submit" value="Enviar" class="inputbusca">
-              </div></td>
+            <td height="12" colspan="2">
+                <div align="center">
+                  <input type="submit" name="Submit" value="Entrar" class="inputbusca">
+                </div></td>
           </tr>
           <tr> 
-            <td colspan="2"><div align="center"><strong><font color="#FF0000" size="1" face="Arial, Helvetica, sans-serif"><%=online%></font></strong></div></td>
+            <td colspan="2"><div align="center" class="texto_online"><%=online%></div></td>
           </tr>
         </table>
 	  </form>
     </td>
   </tr>
 </table>
+</body>
+</html>
 <!--#include file="chat_close.asp"-->
