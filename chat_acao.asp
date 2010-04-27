@@ -1,5 +1,4 @@
 <!--#include file="chat_conecta.asp"-->
-<!--#include file="chat_funcoes.asp" -->
 <%
 
 if request.querystring("x")=1 then
