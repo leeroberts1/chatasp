@@ -1,32 +1,37 @@
 body {
-	SCROLLBAR-FACE-COLOR: #777777;
-	FONT-SIZE: 10px;
-	COLOR: #000000;
-	font-family: Arial, Helvetica, sans-serif;
+	background-image: url(imagens/fundoadm.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
 }
-body	{SCROLLBAR-3DLIGHT-COLOR: #777777; }
-body	{SCROLLBAR-ARROW-COLOR: white; }
-body	{SCROLLBAR-TRACK-COLOR: #f5f6ed; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, Helvetica; }
-body	{SCROLLBAR-DARKSHADOW-COLOR: #777777; }
-body	{SCROLLBAR-BASE-COLOR: #777777}
-
 .inputbusca {
 	font-size: 8pt;
 	font-family: Verdana, Arial;
 	color: #ff0000;
-
-background-color=#ffffff;
+	background-color: #ffffff;
 	background-image: url(imagens/bametalica.gif);
 	border: 1px double #c0c0c0;
-
-
 }
 .tabelas {
 	background-color: #f7f7f7;
-	border: 1px dashed #000000;
-
+	border: 1px solid #cccccc;
+	padding:5px;
 }
-
+.texto {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	font-weight:bold;
+}
+.texto_online {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ff0000;
+	text-decoration: none;
+	font-weight:bold;
+}
 .imagecode {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
