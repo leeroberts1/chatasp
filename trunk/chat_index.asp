@@ -1,63 +1,42 @@
+<!--#include file="chat_conecta.asp"-->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<title>CHATASP - Bate Papo</title>
 	<link href="chat_css.css" rel="stylesheet" type="text/css">
-<!--#include file="chat_conecta.asp"-->
-<!--#include file="chat_funcoes.asp"-->
 <%
-
-application("site")="CHATASP - FREE CHAT ASP"
-site="CHATASP - FREE CHAT ASP"
+dim id,act,sql
 id=session.SessionID
 response.write verificauser()
+act=request.QueryString("act")
 
 sql="delete * from chat_users where session_id="&id
 conn.execute(sql)
 
-if request.querystring("act")=1 then
-
-
-apelido=request.form("apelido")
-
-if apelido="" then
-response.Redirect("chat_index.asp?e=1")
-response.end()
-end if
-
-apelido=replace(Server.HTMLEncode(apelido),"'"," ")
-
-
-
-cor=request.form("cor")
-sql="select * from chat_users where apelido='"&apelido&"'"
-set rs=conn.execute(sql)
-if rs.eof then
-sql="insert into chat_users (session_id,apelido,hora_s,cor,hora_ent) values ("&id&",'"&apelido&"',"
-sql=sql&"#"&fun_hora&"#,'"&cor&"',#"&data2(now)&"#)"
-conn.execute(sql)
-reservado=-1
-sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','ff0000','comunica','<font color="&cor&">"&apelido&"</font> entrou na sala',#"&data2(now)&"#,"&reservado&")"
-conn.execute(sql)
-
-
-%>
-<script language="JavaScript" type="text/JavaScript">
-<!--
-
-window.open('chat_jan.asp?apelido=<%=apelido%>&cor=<%=cor%>','chat','width=750,height=500');
-
-//-->
-</script>
-<%
-
-else
-response.write alerta("O apelido selecionado ja está em uso")
-end if
-rs.close
-set rs=nothing
-
+if act=1 then
+	dim apelido,cor,rs
+	apelido=request.form("apelido")
+	if apelido="" then
+		response.Redirect("chat_index.asp?e=1")
+		response.end()
+	end if
+	apelido=replace(Server.HTMLEncode(apelido),"'"," ")
+	cor=request.form("cor")
+	sql="select * from chat_users where apelido='"&apelido&"'"
+	set rs=conn.execute(sql)
+	if rs.eof then
+		sql="insert into chat_users (session_id,apelido,hora_s,cor,hora_ent) values ("&id&",'"&apelido&"',"
+		sql=sql&"#"&fun_hora&"#,'"&cor&"',#"&data2(now)&"#)"
+		conn.execute(sql)
+		sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','ff0000','comunica','<font color="&cor&">"&apelido&"</font> entrou na sala',#"&data2(now)&"#,true)"
+		conn.execute(sql)
+		response.redirect "chat_jan.asp?apelido="&apelido&"&cor="&cor
+	else
+		response.write alerta("O apelido selecionado ja está em uso")
+	end if
+	rs.close
+	set rs=nothing
 end if
 %>
 </head>
@@ -78,25 +57,26 @@ end if
           </tr>
           <tr valign="middle"> 
             <td class="texto"> <div align="right">Cor :</div></td>
-            <td height="25"> <select name="cor" style="width: 100px;">
+            <td height="25"> 
+	<select name="cor" style="width: 100px;">
                 <%
-Dim vCores, vCor, vX, vY, vZ, vColor
-vCores="00,33,66,99,CC,FF"
-vCor=split(vCores,",")
-for vX = 0 to 5
-for vY = 0 to 5
-for vZ = 0 to 5
-vColor = vCor(vX) & vCor(vY) & vCor(vZ) 
-With Response
-.Write "<option style='background-color:" & vColor & "' value='" & vColor & "'>"
-.Write ""
-.Write "</option>"
-End With
-next 
-next
-next
+	Dim vCores, vCor, vX, vY, vZ, vColor
+	vCores="00,33,66,99,CC,FF"
+	vCor=split(vCores,",")
+	for vX = 0 to 5
+		for vY = 0 to 5
+			for vZ = 0 to 5
+				vColor = vCor(vX) & vCor(vY) & vCor(vZ) 
+				With Response
+					.Write "<option style='background-color:" & vColor & "' value='" & vColor & "'>"
+					.Write ""
+					.Write "</option>"
+				End With
+			next 
+		next
+	next
 %>
-              </select> </td>
+    </select> </td>
           </tr>
           <tr> 
             <td height="12" colspan="2">&nbsp;			</td>

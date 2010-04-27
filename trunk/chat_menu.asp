@@ -1,24 +1,24 @@
-
+<!--#include file="chat_conecta.asp"-->
 <link href="chat_css.css" rel="stylesheet" type="text/css"> 
 <%
+dim apelido,cor,cor2,pra,reservado
+dim res1
 
-apelido=replace(request.QueryString("apelido")," ","&nbsp;")
+apelido=request.QueryString("apelido")
+apelido=replace(apelido," ","&nbsp;")
 cor=request.QueryString("cor")
 cor2=request.QueryString("cor2")
 if cor2="" then
-cor2="ff0000"
+	cor2="ff0000"
 end if
 pra=replace(request.querystring("vpara")," ","&nbsp;")
 if len(pra)=0 then
-pra="Todos"
+	pra="Todos"
 end if
-'reservado=request.querystring("reservado")
+
 if reservado="" then
-reservado=request.form("reservado")
+	reservado=request.form("reservado")
 end if
-
-
-
 %>
 <script language="JavaScript" type="text/JavaScript">
 <!--
@@ -54,26 +54,22 @@ parent.acao.location.href='chat_acao.asp?x=1&apelido='+apelido+'&act='+act+'&cor
 //-->
 </script>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="background-color:transparent">
-<!--#include file="chat_conecta.asp"-->
-<!--#include file="chat_funcoes.asp"-->
-
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" align="center">
     <tr>
       
     <td align="center" valign="middle"> 
       <form name="menu" method="post" action="chat_menu.asp?apelido=<%=apelido%>&vpara=<%=pra%>&reservado=<%=reservado%>&cor=<%=cor%>&cor2=<%=cor2%>" onSubmit="envia();">
-        <table width="751" border="0" cellspacing="0" cellpadding="0">
-          <tr bgcolor="e1e1e1"> 
-            <td colspan="3"> <strong><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">&gt;&gt; 
-              Mensagens</font></strong></td>
+        <table width="751" border="0" cellpadding="0" cellspacing="0" class="tabela_user">
+          <tr bgcolor="#e1e1e1"> 
+            <td height="25" colspan="3" class="texto"> &gt;&gt; 
+              Mensagens</td>
           </tr>
           <tr> 
             <td width="14">&nbsp;</td>
-            <td width="612" height="25" align="left" valign="middle"><font size="2" face="Arial, Helvetica, sans-serif" color="#<%=cor%>"> 
-              <%=apelido%> 
-              <select name="Acao" size=1 style="border-color: #000000; border-width: 1; border-style: solid; background-color:#ffffff; font-size: 10; font-family: verdana;" >
+            <td width="612" height="25" align="left" valign="middle"><span class="texto_simples"><%=apelido%></span> 
+              <select name="Acao" size="1" class="texto_simples">
                 <%
-		  Dim Acao(22)
+		  Dim Acao(22),i
 
    Acao(1) = "fala para"
    Acao(2) = "responde para"
@@ -101,26 +97,26 @@ For i = 1 To 19
 Next
 %>
               </select>
-              <strong><font color="#<%=cor2%>"><%=pra%></font></strong> 
-<%
+              <span class="texto_simples"><%=pra%> 
+              <%
 if reservado<0 then
-res1="checked"
+	res1="checked"
 end if
 %>
+              </span>
               <input name="reservado" type="checkbox" value="-1" <%=res1%>>
-              <font color="#000000"><strong>Reservado</strong></font></font></td>
+              <span class="texto">Reservado</span></td>
             <td><input type="hidden" name="enviado" value="sim"></td>
           </tr>
           <tr> 
-            <td><font size="2" face="Arial, Helvetica, sans-serif">&nbsp; </font></td>
-            <td height="25" align="left" valign="middle"><font size="2" face="Arial, Helvetica, sans-serif"> 
-              <strong>Mensagem:</strong> 
+            <td>&nbsp; </td>
+            <td height="25" align="left" valign="middle"> 
+              <span class="texto">Mensagem:              </span>
               <input name="msg" type="text" class="inputbusca" id="msg2" size="70">
-              <input type="button" name="Submit3" value="Enviar" onClick="envia();" class="inputbusca">
-              </font></td>
-            <td width="125"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"> 
+              <input type="button" name="Submit3" value="Enviar" onClick="envia();" class="inputbusca">            </td>
+            <td width="125"><div align="center"> 
                 <input name="Submit2" type="button" class="inputbusca" onClick="MM_goToURL('parent','chat_sai.asp?act=saiu&apelido=<%=apelido%>&cor=<%=cor%>');return document.MM_returnValue" value="Sair">
-                </font></div></td>
+                </div></td>
           </tr>
         </table>
       </form>
