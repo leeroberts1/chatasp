@@ -80,7 +80,7 @@ function verificauser()
 			saida sai("apelido"),sai("cor")
 		sai.movenext
 		wend
-		response.write "<script>parent.location.href='chat_index.asp';</script>"
+		response.write "<script>alert('Você ficou muito tempo parado e foi desconectado!!!');parent.location.href='chat_index.asp';</script>"
 		response.End()
 	end if
 	sai.close

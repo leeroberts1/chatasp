@@ -21,12 +21,17 @@ cor1=request.querystring("cor")
 %>
 
 <body style="background-color:transparent">
-<table width="100%" border="0" align="right" cellpadding="0" cellspacing="0" class="tabelas">
+<table width="100%" height="100% "border="0" align="right" cellpadding="0" cellspacing="0" class="tabelas">
+	<tr>
+		<td valign="top">
+		
+
+<table width="100%" border="0" align="right" cellpadding="0" cellspacing="0">
   <tr> 
     <td height="20" class="texto_online" > Usuarios Ativos:</td>
   </tr>
   <tr> 
-    <td> <a class="user" href="javascript:void(0);" onclick="troca_target('<%=apelido%>','Todos','<%=cor1%>','FF0000');">Todos</a></td>
+    <td> <a class="user" href="javascript:void(0);" onClick="troca_target('<%=apelido%>','Todos','<%=cor1%>','FF0000');">Todos</a></td>
   </tr>
   <%
   dim sql,rs,i,cor
@@ -61,7 +66,7 @@ end if
   %>
   <tr> 
     <td bgcolor="<%=cor%>">
-	<a class="user<%=rs("id")%>" href="javascript:void(0);" onclick="troca_target('<%=apelido%>','<%=replace(rs("apelido")," ","&nbsp;")%>','<%=cor1%>','<%=rs("cor")%>');"><%=rs("apelido")%></a>
+	<a class="user<%=rs("id")%>" href="javascript:void(0);" onClick="troca_target('<%=apelido%>','<%=replace(rs("apelido")," ","&nbsp;")%>','<%=cor1%>','<%=rs("cor")%>');"><%=rs("apelido")%></a>
 	</td>
   </tr>
   <% 
@@ -73,6 +78,11 @@ end if
   set rs=nothing
   %>
 </table>
+
+	  </td>
+	</tr>
+</table>
+
 </body>
 </html>
 <!--#include file="chat_close.asp"-->

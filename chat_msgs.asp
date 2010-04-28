@@ -8,7 +8,7 @@
 	<link href="chat_css.css" rel="stylesheet" type="text/css">
 </head>
 <body style="background-color:transparent">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E4E4E4">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="2%">&nbsp;</td>
     <td width="98%"> <font size="2" face="Arial, Helvetica, sans-serif"> 
@@ -51,10 +51,10 @@
 			x2=""
 			if rs("reservado")=true then
 				if rs("para_user")=replace(apelido," ","&nbsp;") or rs("para_user")="Todos" or rs("de_user")=apelido then
-					response.write "<font class="&x&">"&msg&"</font><br><br>"
+					response.write "<font class="&x&">"&msg&"</font><br>"
 				end if
 			else
-				response.write msg&"<br><br>"
+				response.write msg&"<br>"
 			end if
 		rs.movenext
 		response.Flush()

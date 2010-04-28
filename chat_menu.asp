@@ -8,20 +8,22 @@ apelido=request("apelido")
 apelido=replace(apelido," ","&nbsp;")
 cor=request("cor")
 cor2=request("cor2")
+reservado=request.form("reservado")
+pra=replace(request("vpara")," ","&nbsp;")
+
 if cor2="" then
 	cor2="ff0000"
 end if
-pra=replace(request("vpara")," ","&nbsp;")
+
 if len(pra)=0 then
 	pra="Todos"
 end if
 
-if reservado="" then
-	reservado=request("reservado")
-end if
-
-if reservado=true then
+if reservado="true" then
 	res1="checked"
+else
+	reservado=false
+	res1=""
 end if
 
 %>
@@ -60,7 +62,7 @@ function envia() {
     <tr>
       
     <td align="center" valign="middle"> 
-      <form name="menu" method="post" action="chat_menu.asp?apelido=<%=apelido%>&vpara=<%=pra%>&reservado=<%=reservado%>&cor=<%=cor%>&cor2=<%=cor2%>" onSubmit="envia();">
+      <form name="menu" method="post" action="chat_menu.asp?apelido=<%=apelido%>&vpara=<%=pra%>&cor=<%=cor%>&cor2=<%=cor2%>" onSubmit="envia();">
         <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabelas">
           <tr bgcolor="#e1e1e1"> 
             <td height="25" colspan="3" class="texto"> &gt;&gt; 
