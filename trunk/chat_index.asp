@@ -45,8 +45,12 @@ end if
   <tr>
     <td align="center" valign="middle">
 	<form name="entrar"  method="post" action="chat_index.asp?act=1">
-        <table width="240" border="0" cellspacing="0" cellpadding="0" class="tabelas">
-          <tr valign="middle"> 
+        <table width="450" border="0" cellspacing="0" cellpadding="0" class="tabelas">
+          <tr valign="middle">
+            <td width="76" rowspan="6" class="texto"><img src="imagens/pmb_topo_logo.png" width="200" height="80"><br> </td>
+            <td height="5" colspan="2" class="texto"></td>
+          </tr>
+          <tr valign="middle">
             <td width="76" class="texto"> <div align="right">Apelido :</div></td>
             <td width="164" height="25"> <input type="text" name="apelido" class="inputbusca"><br>
               
@@ -55,7 +59,7 @@ end if
 end if
 %>            </td>
           </tr>
-          <tr valign="middle"> 
+          <tr valign="middle">
             <td class="texto"> <div align="right">Cor :</div></td>
             <td height="25"> 
 	<select name="cor" style="width: 100px;">
@@ -79,13 +83,12 @@ end if
     </select> </td>
           </tr>
           <tr> 
-            <td height="12" colspan="2">&nbsp;			</td>
+            <td height="12" colspan="2">&nbsp;</td>
           </tr>
           <tr>
-            <td height="12" colspan="2">
-                <div align="center">
-                  <input type="submit" name="Submit" value="Entrar" class="inputbusca">
-                </div></td>
+            <td height="12" colspan="2"><div align="center">
+              <input type="submit" name="Submit" value="Entrar" class="inputbusca">
+          </div></td>
           </tr>
           <tr> 
             <td colspan="2"><div align="center" class="texto_online"><%=online%></div></td>

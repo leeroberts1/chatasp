@@ -19,6 +19,11 @@ end if
 if reservado="" then
 	reservado=request("reservado")
 end if
+
+if reservado=true then
+	res1="checked"
+end if
+
 %>
 <script language="JavaScript" type="text/JavaScript">
 <!--
@@ -56,7 +61,7 @@ function envia() {
       
     <td align="center" valign="middle"> 
       <form name="menu" method="post" action="chat_menu.asp?apelido=<%=apelido%>&vpara=<%=pra%>&reservado=<%=reservado%>&cor=<%=cor%>&cor2=<%=cor2%>" onSubmit="envia();">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabela_user">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabelas">
           <tr bgcolor="#e1e1e1"> 
             <td height="25" colspan="3" class="texto"> &gt;&gt; 
               Mensagens</td>
@@ -94,14 +99,8 @@ For i = 1 To 19
 Next
 %>
               </select>
-              <span class="texto_simples"><%=pra%> 
-              <%
-if reservado<0 then
-	res1="checked"
-end if
-%>
-              </span>
-              <input name="reservado" type="checkbox" value="-1" <%=res1%> id="reservado">
+              <span class="texto_simples"><%=pra%></span>
+              <input name="reservado" type="checkbox" value="true" <%=res1%> id="reservado">
               <span class="texto">Reservado</span></td>
             <td><input type="hidden" name="enviado" value="sim"></td>
           </tr>
@@ -114,6 +113,9 @@ end if
             <td width="125"><div align="center"> 
                 <input name="Submit2" type="button" class="inputbusca" onClick="MM_goToURL('parent','chat_sai.asp?act=saiu&apelido=<%=apelido%>&cor=<%=cor%>');return document.MM_returnValue" value="Sair">
                 </div></td>
+          </tr>
+          <tr>
+            <td height="10" colspan="3"></td>
           </tr>
         </table>
       </form>
