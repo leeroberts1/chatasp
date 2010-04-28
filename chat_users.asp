@@ -1,19 +1,32 @@
 <!--#include file="chat_conecta.asp"-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="refresh" content="30">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>CHATASP - Bate Papo</title>
+	<link href="chat_css.css" rel="stylesheet" type="text/css">
+	<script language="javascript">
+	function troca_target(apelido,para,cor1,cor2){
+		var menu=parent.document.getElementById('menu');
+		menu.src='chat_menu.asp?apelido='+apelido+'&vpara='+para+'&cor='+cor1+'&cor2='+cor2;
+	}
+	</script>
+</head>
 <%
 dim apelido,cor1
 response.write verificauser()
 apelido=replace(request.querystring("apelido")," ","&nbsp;")
 cor1=request.querystring("cor")
 %>
-<meta http-equiv="refresh" content="30">
-<link href="chat_css.css" rel="stylesheet" type="text/css">
+
 <body style="background-color:transparent">
-<table width="100%" border="0" align="right" cellpadding="0" cellspacing="0">
+<table width="100%" border="0" align="right" cellpadding="0" cellspacing="0" class="tabelas">
   <tr> 
-    <td bgcolor="#000000"> <div align="center">Usuarios Ativos:</div></td>
+    <td height="20" class="texto_online" > Usuarios Ativos:</td>
   </tr>
   <tr> 
-    <td bgcolor="#cccccc"> <div align="center"><a class="user" href="chat_menu.asp?apelido=<%=apelido%>&vpara=Todos&cor=<%=cor1%>&cor2=ff0000" target="menu">Todos</a></div></td>
+    <td> <a class="user" href="javascript:void(0);" onclick="troca_target('<%=apelido%>','Todos','<%=cor1%>','FF0000');">Todos</a></td>
   </tr>
   <%
   dim sql,rs,i,cor
@@ -47,7 +60,9 @@ cor = "#e1e1e1"
 end if 
   %>
   <tr> 
-    <td bgcolor="<%=cor%>"><div align="center"><a  class="user<%=rs("id")%>" href="chat_menu.asp?apelido=<%=apelido%>&vpara=<%=replace(rs("apelido")," ","&nbsp;")%>&cor=<%=cor1%>&cor2=<%=rs("cor")%>" target="menu"><%=rs("apelido")%></a></div></td>
+    <td bgcolor="<%=cor%>">
+	<a class="user<%=rs("id")%>" href="javascript:void(0);" onclick="troca_target('<%=apelido%>','<%=replace(rs("apelido")," ","&nbsp;")%>','<%=cor1%>','<%=rs("cor")%>');"><%=rs("apelido")%></a>
+	</td>
   </tr>
   <% 
    i = i+1
@@ -58,4 +73,6 @@ end if
   set rs=nothing
   %>
 </table>
+</body>
+</html>
 <!--#include file="chat_close.asp"-->

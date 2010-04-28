@@ -8,7 +8,7 @@
 	<link href="chat_css.css" rel="stylesheet" type="text/css">
 </head>
 <body style="background-color:transparent">
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#E4E4E4">
   <tr>
     <td width="2%">&nbsp;</td>
     <td width="98%"> <font size="2" face="Arial, Helvetica, sans-serif"> 
@@ -73,15 +73,16 @@
       </font> </td>
   </tr>
 </table>
-<A NAME="#MARCA"></A>
-<script language="VBScript">
-Sub Rolagem()
-if parent(0).rolar.checked then
-   window.location.href = "#MARCA"
-End if
-End sub
-
-Rolagem()
+<A NAME="MARCA"></A>
+<script language="javascript">
+function rolagem(){
+	
+	if(parent.document.getElementById("rolar").checked){
+  		location.hash = "MARCA"
+	}
+	
+}
+rolagem()
 </script>
 </body>
 </html>

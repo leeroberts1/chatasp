@@ -78,13 +78,14 @@ function verificauser()
 	if not sai.eof then
 		while not sai.eof
 			saida sai("apelido"),sai("cor")
-			sql="delete * from chat_users where hora_s < #"&hora&"# and id="&sai("id")
-			conn.execute(sql)
 		sai.movenext
 		wend
+		response.write "<script>parent.location.href='chat_index.asp';</script>"
+		response.End()
 	end if
 	sai.close
 	set sai=nothing
+	
 end function
 
 Sub saida(apelido,cor)
