@@ -4,20 +4,20 @@
 dim apelido,cor,cor2,pra,reservado
 dim res1
 
-apelido=request.QueryString("apelido")
+apelido=request("apelido")
 apelido=replace(apelido," ","&nbsp;")
-cor=request.QueryString("cor")
-cor2=request.QueryString("cor2")
+cor=request("cor")
+cor2=request("cor2")
 if cor2="" then
 	cor2="ff0000"
 end if
-pra=replace(request.querystring("vpara")," ","&nbsp;")
+pra=replace(request("vpara")," ","&nbsp;")
 if len(pra)=0 then
 	pra="Todos"
 end if
 
 if reservado="" then
-	reservado=request.form("reservado")
+	reservado=request("reservado")
 end if
 %>
 <script language="JavaScript" type="text/JavaScript">
@@ -30,25 +30,22 @@ function MM_goToURL() { //v3.0
 
 
 function envia() {
-var msg=document.menu.msg.value;
-var apelido='<%=apelido%>';
-var cor='<%=cor%>';
-var cor2='<%=cor2%>';
-var pra='<%=pra%>';
+	var msg=document.getElementById("msg2").value;
+	var apelido='<%=apelido%>';
+	var cor='<%=cor%>';
+	var cor2='<%=cor2%>';
+	var pra='<%=pra%>';
+	if (document.getElementById("reservado").checked==true){
+		var reservado="-1";
+	}else{
+		var reservado="0"; 
+	}
 
+	var act=document.getElementById("acao").value;
 
-if (menu.reservado.checked==true)
-{ var reservado="-1";
-}
-else
-{ var reservado="0"; 
-}
-
-var act=document.menu.Acao.value;
-
-document.menu.msg.value="";
-document.menu.msg.focus();
-parent.acao.location.href='chat_acao.asp?x=1&apelido='+apelido+'&act='+act+'&cor='+cor+'&cor2='+cor2+'&pra='+pra+'&reservado='+reservado+'&msg='+msg+'';
+	document.getElementById("msg2").value="";
+	document.getElementById("msg2").focus();
+	parent.acao.location.href='chat_acao.asp?x=1&apelido='+apelido+'&act='+act+'&cor='+cor+'&cor2='+cor2+'&pra='+pra+'&reservado='+reservado+'&msg='+msg;
 
 }
 //-->
@@ -67,7 +64,7 @@ parent.acao.location.href='chat_acao.asp?x=1&apelido='+apelido+'&act='+act+'&cor
           <tr> 
             <td width="14">&nbsp;</td>
             <td width="612" height="25" align="left" valign="middle"><span class="texto_simples"><%=apelido%></span> 
-              <select name="Acao" size="1" class="texto_simples">
+              <select name="Acao" size="1" class="texto_simples" id="acao">
                 <%
 		  Dim Acao(22),i
 
@@ -104,7 +101,7 @@ if reservado<0 then
 end if
 %>
               </span>
-              <input name="reservado" type="checkbox" value="-1" <%=res1%>>
+              <input name="reservado" type="checkbox" value="-1" <%=res1%> id="reservado">
               <span class="texto">Reservado</span></td>
             <td><input type="hidden" name="enviado" value="sim"></td>
           </tr>
@@ -124,6 +121,6 @@ end if
     </tr>
   </table>
 <script>
-document.menu.msg.focus();
+	document.getElementById("msg2").focus();
 </script>
 <!--#include file="chat_close.asp"-->

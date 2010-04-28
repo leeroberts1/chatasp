@@ -16,7 +16,8 @@ cor1=request.querystring("cor")
     <td bgcolor="#cccccc"> <div align="center"><a class="user" href="chat_menu.asp?apelido=<%=apelido%>&vpara=Todos&cor=<%=cor1%>&cor2=ff0000" target="menu">Todos</a></div></td>
   </tr>
   <%
-  dim sql,rs
+  dim sql,rs,i,cor
+
   sql="select * from chat_users where session_id<>"&session.SessionID
   set rs=conn.execute(sql)
   if not rs.eof then
