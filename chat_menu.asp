@@ -59,7 +59,7 @@ parent.acao.location.href='chat_acao.asp?x=1&apelido='+apelido+'&act='+act+'&cor
       
     <td align="center" valign="middle"> 
       <form name="menu" method="post" action="chat_menu.asp?apelido=<%=apelido%>&vpara=<%=pra%>&reservado=<%=reservado%>&cor=<%=cor%>&cor2=<%=cor2%>" onSubmit="envia();">
-        <table width="751" border="0" cellpadding="0" cellspacing="0" class="tabela_user">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabela_user">
           <tr bgcolor="#e1e1e1"> 
             <td height="25" colspan="3" class="texto"> &gt;&gt; 
               Mensagens</td>
