@@ -36,7 +36,8 @@ cor=server.urlencode(request.querystring("cor"))
   </tr>
   <tr>
     <td> 
-      <iframe frameborder="0" width="100" height="100" scrolling="no" src="chat_acao.asp" name="acao" allowtransparency="true"></iframe> </td>
+      <iframe frameborder="0" width="0" height="0" scrolling="no" src="chat_acao.asp" name="acao" allowtransparency="true"></iframe> 
+	</td>
   </tr>
   <tr> 
     <td height="80" colspan="2"> <iframe frameborder="0" width="100%" height="100%" scrolling="no" src="chat_menu.asp?apelido=<%=apelido%>&cor=<%=cor%>" name="menu" allowtransparency="true"></iframe> 
