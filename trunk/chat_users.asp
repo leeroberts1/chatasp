@@ -6,12 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<title>CHATASP - Bate Papo</title>
 	<link href="chat_css.css" rel="stylesheet" type="text/css">
-	<script language="javascript">
-	function troca_target(apelido,para,cor1,cor2){
-		var menu=parent.document.getElementById('menu');
-		menu.src='chat_menu.asp?apelido='+apelido+'&vpara='+para+'&cor='+cor1+'&cor2='+cor2;
-	}
-	</script>
+	<script src="js/users.js" type="text/javascript"></script>
 </head>
 <%
 dim apelido,cor1
