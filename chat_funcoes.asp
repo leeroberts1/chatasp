@@ -1,8 +1,9 @@
 <%
-function alerta(msg)
-if msg<>"" then
-response.write "<script>alert('"&msg&"');</script>"
-end if
+function alerta(txt,url)
+	alerta=""
+	if txt<>"" then	alerta=alerta&"alert('"&txt&"');"
+	if url<>"" then alerta=alerta&"parent.location.href='"&url&"';"
+	alerta="<script>"&alerta&"</script>"
 end function
 
 Function Data2(txt)
@@ -57,19 +58,6 @@ Function Fun_Hora()
 	Fun_Hora = CStr(hora) + ":" + CStr(minutos) + ":" + CStr(segundos)
 End Function
 
-function trocar(mensagemx,palavrao,palavra)
-palavroes=split(palavrao,"|")
-palavras=split(palavra,"|")
-For i= 0 to ubound(palavroes)
-Resultado = Replace(mensagemx,palavroes(i),palavras(i))
-If mensagemx <> Resultado Then
-mensagemx = ""
-mensagemx = Resultado
-End IF
-Next
-trocar = Resultado
-end function
-
 function verificauser()
 	dim hora,sql,sai
 	hora = DATEADD("n", -5, fun_hora())
@@ -99,10 +87,7 @@ function verifica(sessao)
 	sql="select * from chat_users where session_id="&sessao
 	set tm=conn.execute(sql)
 	if tm.eof then
-		response.write alerta("Você ficou muito tempo parado agora terá que se conectar de novo")
-		response.write "<script>"
-		response.write "parent.location.href= 'chat_sai.asp';"
-		response.write "</script>"
+		response.write alerta("Você ficou muito tempo parado agora terá que se conectar de novo","chat_sai.asp")
 	end if
 	tm.close
 	set tm=nothing
