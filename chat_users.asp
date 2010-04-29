@@ -23,10 +23,10 @@ cor1=request.querystring("cor")
 
 <table width="100%" border="0" align="right" cellpadding="0" cellspacing="0">
   <tr> 
-    <td height="20" class="texto_online" > Usuarios Ativos:</td>
+    <td height="15" valign="middle" class="tabela_linha_baixa"><div class="texto_online">Usuarios Ativos:</div></td>
   </tr>
   <tr> 
-    <td> <a class="user" href="javascript:void(0);" onClick="troca_target('<%=apelido%>','Todos','<%=cor1%>','FF0000');">Todos</a></td>
+    <td height="20" valign="middle"> <a class="user" href="javascript:void(0);" onClick="troca_target('<%=apelido%>','Todos','<%=cor1%>','FF0000');">- Todos</a></td>
   </tr>
   <%
   dim sql,rs,i,cor
@@ -60,8 +60,8 @@ cor = "#e1e1e1"
 end if 
   %>
   <tr> 
-    <td bgcolor="<%=cor%>">
-	<a class="user<%=rs("id")%>" href="javascript:void(0);" onClick="troca_target('<%=apelido%>','<%=replace(rs("apelido")," ","&nbsp;")%>','<%=cor1%>','<%=rs("cor")%>');"><%=rs("apelido")%></a>
+    <td height="20" valign="middle" bgcolor="<%=cor%>">
+	<a class="user<%=rs("id")%>" href="javascript:void(0);" onClick="troca_target('<%=apelido%>','<%=replace(rs("apelido")," ","&nbsp;")%>','<%=cor1%>','<%=rs("cor")%>');">- <%=rs("apelido")%></a>
 	</td>
   </tr>
   <% 

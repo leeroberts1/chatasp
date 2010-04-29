@@ -21,6 +21,9 @@ body {
 .tabela_user {
 	background-color: #f7f7f7;
 }
+.tabela_linha_baixa {
+	border-bottom:1px solid #cccccc;
+}
 .texto {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -55,7 +58,7 @@ body {
 }
 .reservado {
 	background-color: #c1c1c1;
-	padding-top:3px;
+	padding:1px;
 }
 .avisa {
 	background-color: #00FF66;
