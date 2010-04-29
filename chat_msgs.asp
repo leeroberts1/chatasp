@@ -6,6 +6,7 @@
 	<meta http-equiv="refresh" content="5">
 	<title>CHATASP - Bate Papo</title>
 	<link href="chat_css.css" rel="stylesheet" type="text/css">
+	<script src="js/users.js" type="text/javascript"></script>
 </head>
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -73,16 +74,7 @@
   </tr>
 </table>
 <A NAME="MARCA"></A>
-<script language="javascript">
-function rolagem(){
-	
-	if(parent.document.getElementById("rolar").checked){
-  		location.hash = "MARCA"
-	}
-	
-}
-rolagem()
-</script>
+<script language="javascript">rolagem();</script>
 </body>
 </html>
 <!--#include file="chat_close.asp" -->
