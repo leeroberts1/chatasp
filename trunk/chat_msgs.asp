@@ -63,10 +63,7 @@
 		rs.close
 		set rs=nothing
 	else
-		response.write "<script>"
-		response.write "alert('Não foi possivel determinar sua conexão...');"
-		response.write "parent.location.href='chat_index.asp';"
-		response.write "</script>"
+		response.write alerta("Não foi possivel determinar sua conexão...","chat_index.asp")
 	end if
 	rs1.close
 	set rs1=nothing
