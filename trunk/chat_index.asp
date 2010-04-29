@@ -74,7 +74,7 @@ end if
 			for vZ = 0 to 5
 				vColor = vCor(vX) & vCor(vY) & vCor(vZ) 
 				With Response
-					.Write "<option style='background-color:" & vColor & "' value='" & vColor & "'>"
+					.Write "<option style='background-color:#"&vColor&"' value='"&vColor&"'>"
 					.Write ""
 					.Write "</option>"
 				End With
