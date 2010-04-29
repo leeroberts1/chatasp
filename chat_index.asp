@@ -5,6 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<title>CHATASP - Bate Papo</title>
 	<link href="chat_css.css" rel="stylesheet" type="text/css">
+	<script src="js/mask.js" language="javascript"></script>
 <%
 dim id,act,sql
 id=session.SessionID
@@ -52,12 +53,13 @@ end if
           </tr>
           <tr valign="middle">
             <td width="76" class="texto"> <div align="right">Apelido :</div></td>
-            <td width="164" height="25"> <input type="text" name="apelido" class="inputbusca"><br>
+            <td width="164" height="25"> <input name="apelido" type="text" class="inputbusca" onKeyPress="return formatar(this, 'MMMMMMMMMMMMMMM',event)" size="20" maxlength="15"><br>
               
-<% if request.QueryString("e")=1 then
-	response.write "Digite um apelido"
-end if
-%>            </td>
+              <span class="texto_online">
+              <%if request.QueryString("e")=1 then response.write "* Digite um apelido"%> 
+              </span>
+			  
+			</td>
           </tr>
           <tr valign="middle">
             <td class="texto"> <div align="right">Cor :</div></td>
