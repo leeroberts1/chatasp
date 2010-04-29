@@ -73,15 +73,15 @@ end function
 function verificauser()
 	dim hora,sql,sai
 	hora = DATEADD("n", -5, fun_hora())
-	sql="select * from chat_users where hora_s < #"&hora&"#"
+	sql="SELECT chat_users.id, chat_users.session_id, chat_users.apelido, chat_users.hora_s, chat_users.cor, chat_users.hora_ent FROM chat_users WHERE (((chat_users.hora_ent)<Now()) AND ((DateDiff(""n"",[hora_s],Time()))>5 Or (DateDiff(""n"",[hora_s],Time()))<-5))"
 	set sai=conn.execute(sql)
 	if not sai.eof then
 		while not sai.eof
 			saida sai("apelido"),sai("cor")
+			sql="delete * from chat_users where id="&sai("id")
+			conn.execute(sql) 			
 		sai.movenext
 		wend
-		response.write "<script>alert('Você ficou muito tempo parado e foi desconectado!!!');parent.location.href='chat_index.asp';</script>"
-		response.End()
 	end if
 	sai.close
 	set sai=nothing
@@ -90,24 +90,22 @@ end function
 
 Sub saida(apelido,cor)
 	dim sql
-	sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','"&cor&"','avisa','"&apelido&" saiu da sala',#"&Data2(now)&"#,true)"
-	conn.execute(sql)
-	sql="delete from chat_users where apelido='"&apelido&"'"
+	sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','"&cor&"','avisa','<font color=#"&cor&">"&apelido&"</font> saiu da sala',#"&Data2(now)&"#,true)"
 	conn.execute(sql)
 end sub
 
 function verifica(sessao)
-verificauser()
-sql="select * from chat_users where session_id="&sessao
-set tm=conn.execute(sql)
-if tm.eof then
-response.write alerta("Você ficou muito tempo parado agora terá que se conectar de novo")
-response.write "<script>"
-response.write "parent.location.href= 'chat_sai.asp';"
-response.write "</script>"
-end if
-tm.close
-set tm=nothing
+	verificauser()
+	sql="select * from chat_users where session_id="&sessao
+	set tm=conn.execute(sql)
+	if tm.eof then
+		response.write alerta("Você ficou muito tempo parado agora terá que se conectar de novo")
+		response.write "<script>"
+		response.write "parent.location.href= 'chat_sai.asp';"
+		response.write "</script>"
+	end if
+	tm.close
+	set tm=nothing
 end function
 
 function online()
