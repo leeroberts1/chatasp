@@ -7,11 +7,11 @@
 	<title>CHATASP - Bate Papo</title>
 	<link href="chat_css.css" rel="stylesheet" type="text/css">
 </head>
-<body style="background-color:transparent">
+<body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="2%">&nbsp;</td>
-    <td width="98%"> <font size="2" face="Arial, Helvetica, sans-serif"> 
+    <td width="98%"> <span class="texto_simples">
       <%
 	dim hora,sql,rs1
 	dim hora_ent
@@ -51,7 +51,7 @@
 			x2=""
 			if rs("reservado")=true then
 				if rs("para_user")=replace(apelido," ","&nbsp;") or rs("para_user")="Todos" or rs("de_user")=apelido then
-					response.write "<font class="&x&">"&msg&"</font><br>"
+					response.write "<div class="&x&">"&msg&"</div>"&chr(13)
 				end if
 			else
 				response.write msg&"<br>"
@@ -63,14 +63,16 @@
 		rs.close
 		set rs=nothing
 	else
-		response.Flush()
-		response.write session.SessionID
+		response.write "<script>"
+		response.write "alert('Não foi possivel determinar sua conexão...');"
+		response.write "parent.location.href='chat_index.asp';"
+		response.write "</script>"
 	end if
 	rs1.close
 	set rs1=nothing
 	response.Flush()
 	%>
-      </font> </td>
+      </span> </td>
   </tr>
 </table>
 <A NAME="MARCA"></A>

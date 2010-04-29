@@ -7,7 +7,7 @@ cor=request.querystring("cor")
 
 	saida apelido,cor
 	response.write "<script>"
-	response.write "window.close();"
+	response.write "parent.location.href='chat_index.asp';"
 	response.write "</script>"
 	response.end
 	

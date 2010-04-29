@@ -29,7 +29,7 @@ if act=1 then
 		sql="insert into chat_users (session_id,apelido,hora_s,cor,hora_ent) values ("&id&",'"&apelido&"',"
 		sql=sql&"#"&fun_hora&"#,'"&cor&"',#"&data2(now)&"#)"
 		conn.execute(sql)
-		sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','ff0000','comunica','<font color="&cor&">"&apelido&"</font> entrou na sala',#"&data2(now)&"#,true)"
+		sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','ff0000','comunica','<font color=#"&cor&">"&apelido&"</font> entrou na sala',#"&data2(now)&"#,true)"
 		conn.execute(sql)
 		response.redirect "chat_jan.asp?apelido="&apelido&"&cor="&cor
 	else

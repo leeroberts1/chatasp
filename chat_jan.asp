@@ -21,7 +21,7 @@ document.onkeydown=keypresed;
 apelido=replace(request.querystring("apelido")," ","&nbsp;")
 cor=server.urlencode(request.querystring("cor"))
 %>
-<body onUnload="MM_openBrWindow('chat_sai.asp?act=saiu2&apelido=<%=apelido%>&cor=<%=cor%>','xx','width=100,height=100')">
+<body>
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F4F4F4">
   <tr> 
     <td height="80" colspan="2"><!--#include file="chat_topo.asp" -->
