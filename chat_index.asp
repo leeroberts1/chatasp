@@ -6,6 +6,7 @@
 	<title>CHATASP - Bate Papo</title>
 	<link href="chat_css.css" rel="stylesheet" type="text/css">
 	<script src="js/mask.js" language="javascript"></script>
+	<script src="js/jscolor.js" language="javascript"></script>
 <%
 dim id,act,sql
 id=session.SessionID
@@ -63,25 +64,7 @@ end if
           <tr valign="middle">
             <td class="texto"> <div align="right">Cor :</div></td>
             <td height="25"> 
-	<select name="cor" style="width: 100px;" class="texto_cores">
-                <%
-	Dim vCores, vCor, vX, vY, vZ, vColor
-	vCores="00,33,66,99,CC,FF"
-	vCor=split(vCores,",")
-	for vX = 0 to 5
-		for vY = 0 to 5
-			for vZ = 0 to 5
-				vColor = vCor(vX) & vCor(vY) & vCor(vZ) 
-				With Response
-					.Write "<option style='background-color:#"&vColor&"' value='"&vColor&"'>"
-					.Write vColor
-					.Write "</option>"
-				End With
-			next 
-		next
-	next
-%>
-    </select> </td>
+	<input name="cor" class="color" id="cor" value="0000FF" size="22"> </td>
           </tr>
           <tr> 
             <td height="12" colspan="2">&nbsp;</td>
