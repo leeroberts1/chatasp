@@ -37,6 +37,12 @@ body {
 	color: #000000;
 	text-decoration: none;
 }
+.texto_cores {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
 .texto_online {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;

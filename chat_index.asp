@@ -45,26 +45,25 @@ end if
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td align="center" valign="middle">
-	<form name="entrar"  method="post" action="chat_index.asp?act=1">
+	<form name="entrar"  method="post" action="chat_index.asp?act=1" onSubmit="return formatar();">
         <table width="450" border="0" cellspacing="0" cellpadding="0" class="tabelas">
           <tr valign="middle">
-            <td width="76" rowspan="6" class="texto"><img src="imagens/pmb_topo_logo.png" width="200" height="80"><br> </td>
+            <td width="76" rowspan="7" class="texto"><img src="imagens/pmb_topo_logo.png" width="200" height="80"><br> </td>
             <td height="5" colspan="2" class="texto"></td>
           </tr>
           <tr valign="middle">
             <td width="76" class="texto"> <div align="right">Apelido :</div></td>
-            <td width="164" height="25"> <input name="apelido" type="text" class="inputbusca" onKeyPress="return formatar(this, 'MMMMMMMMMMMMMMM',event)" size="20" maxlength="15"><br>
-              
-              <span class="texto_online">
-              <%if request.QueryString("e")=1 then response.write "* Digite um apelido"%> 
-              </span>
-			  
-			</td>
+            <td width="164" height="25"> <input name="apelido" type="text" class="inputbusca" id="apelido" size="20" maxlength="15">
+              <%if request.QueryString("e")=1 then response.write "<div class=""texto_online"">* Digite um apelido</div>"%> 
+  			</td>
+          </tr>
+          <tr valign="middle">
+            <td colspan="2" class="texto"><div id="err" class="texto_online" align="right"></div></td>
           </tr>
           <tr valign="middle">
             <td class="texto"> <div align="right">Cor :</div></td>
             <td height="25"> 
-	<select name="cor" style="width: 100px;">
+	<select name="cor" style="width: 100px;" class="texto_cores">
                 <%
 	Dim vCores, vCor, vX, vY, vZ, vColor
 	vCores="00,33,66,99,CC,FF"
@@ -75,7 +74,7 @@ end if
 				vColor = vCor(vX) & vCor(vY) & vCor(vZ) 
 				With Response
 					.Write "<option style='background-color:#"&vColor&"' value='"&vColor&"'>"
-					.Write ""
+					.Write vColor
 					.Write "</option>"
 				End With
 			next 
