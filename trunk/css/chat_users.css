@@ -1,0 +1,86 @@
+.chataspusers {
+	position:relative;
+	z-index:100;
+	width:142px;
+}
+.chataspusers ul {
+	position:relative;
+	float:left;
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	background:#cccccc url(../imagens/silver-sub-bg.gif) repeat-y center left;
+}
+.chataspusers li {
+	float:left;
+	width:140px;
+	margin:0;
+	padding:0 1px 1px 1px;
+}
+.chataspusers li:hover,.chataspusers .ajxover {
+	position:relative;
+}
+.chataspusers a {	
+	display:block;
+	width:121px;
+	height:28px;
+	white-space:nowrap;
+	overflow:hidden;
+	padding:0 8px 0 11px;
+	font:11px/28px Verdana,Arial,Helvetica,sans-serif;
+	text-decoration:none;
+	text-align:left;
+	color:#777777;
+	background:#eeeeee url(../imagens/silver-sub.gif) no-repeat top left;
+}
+.chataspusers .tfirst a {
+	margin-top:1px;
+}
+.chataspusers li:hover a,.chataspusers .ajxover a {
+	color:#ffffff;
+	background:#aaaaaa url(../imagens/silver-sub.gif) no-repeat bottom left;
+}
+.chataspusers ul ul {
+	position:absolute;
+	left:-9999px;
+	top:-9999px;
+	width:156px;
+	height:auto;
+	background:#cccccc url(silver-sub-bg.gif) repeat-y center left;
+}
+.chataspusers ul :hover ul,.chataspusers ul .ajxover ul {
+	left:142px;
+	top:-1px;
+}
+.chataspusers .tfirst:hover ul,.chataspusers ul .ajxover.tfirst ul {
+	top:0px;
+}
+.chataspusers li li {
+	width:154px;
+	padding:0 1px 1px 1px;
+}
+.chataspusers ul ul a,.chataspusers ul :hover ul a,.chataspusers ul .ajxover ul a {
+	margin:0;
+	width:135px;
+	height:auto;
+	white-space:normal;
+	padding:6px 8px 7px 11px;
+	font:11px/11px Verdana,Arial,Helvetica,sans-serif;
+	text-decoration:none;
+	border:0;
+	color:#777777;
+	background:#eeeeee url(../imagens/silver-sub.gif) no-repeat top left;
+}
+.chataspusers ul :hover ul .sfirst a,.chataspusers ul .ajxover ul .sfirst a {
+	margin-top:1px;
+}
+.chataspusers ul ul :hover a,.chataspusers ul ul .ajxover a {
+	color:#ffffff;
+	background:#aaaaaa url(../imagens/silver-sub.gif) no-repeat bottom left;
+}
+.chataspusers br {
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
