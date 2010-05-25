@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<title>CHATASP - Bate Papo</title>
-	<link href="chat_css.css" rel="stylesheet" type="text/css">
+	<link href="css/chat_css.css" rel="stylesheet" type="text/css">
 	<script src="js/mask.js" language="javascript"></script>
 	<script src="js/jscolor.js" language="javascript"></script>
 <%

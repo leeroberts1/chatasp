@@ -5,14 +5,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 	<meta http-equiv="refresh" content="5">
 	<title>CHATASP - Bate Papo</title>
-	<link href="chat_css.css" rel="stylesheet" type="text/css">
+	<link href="css/chat_css.css" rel="stylesheet" type="text/css">
 	<script src="js/users.js" type="text/javascript"></script>
 </head>
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="2%">&nbsp;</td>
-    <td width="98%"> <span class="texto_simples">
+    <td width="1%">&nbsp;</td>
+    <td width="99%"> 
+	<span class="texto_simples">
       <%
 	dim hora,sql,rs1
 	dim hora_ent
@@ -34,7 +35,7 @@
 		while not rs.eof
 			de="<font color=#"&rs("cor_de")&">"&rs("de_user")&"</font>"
 			para="<font color=#"&rs("cor_para")&">"&rs("para_user")&"</font> "
-			hora="<font size=1 face=arial>"&right(rs("hora"),8)&"</font>"
+			hora=right(rs("hora"),8)
 			act=rs("act")
 			if act="avisa" then 
 				x="avisa"
@@ -50,6 +51,7 @@
 	  		msg=x1&"("&hora&") "& de &" "&act&" "& para &": "&rs("msg")&x2
 			x1=""
 			x2=""
+			response.write "<div>"&chr(13)
 			if rs("reservado")=true then
 				if rs("para_user")=replace(apelido," ","&nbsp;") or rs("para_user")="Todos" or rs("de_user")=apelido then
 					response.write "<div class="&x&">"&msg&"</div>"&chr(13)
@@ -57,6 +59,7 @@
 			else
 				response.write msg&"<br>"
 			end if
+			response.write "</div>"&chr(13)
 		rs.movenext
 		response.Flush()
 		wend
@@ -70,7 +73,7 @@
 	set rs1=nothing
 	response.Flush()
 	%>
-      </span> </td>
+    </span> </td>
   </tr>
 </table>
 <A NAME="MARCA"></A>
