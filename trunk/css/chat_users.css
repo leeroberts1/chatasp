@@ -30,14 +30,14 @@
 	font:11px/28px Verdana,Arial,Helvetica,sans-serif;
 	text-decoration:none;
 	text-align:left;
-	color:#777777;
+	/*color:#777777;*/
 	background:#eeeeee url(../imagens/silver-sub.gif) no-repeat top left;
 }
 .chataspusers .tfirst a {
 	margin-top:1px;
 }
 .chataspusers li:hover a,.chataspusers .ajxover a {
-	color:#ffffff;
+	/*color:#ffffff;*/
 	background:#aaaaaa url(../imagens/silver-sub.gif) no-repeat bottom left;
 }
 .chataspusers ul ul {
@@ -46,7 +46,7 @@
 	top:-9999px;
 	width:156px;
 	height:auto;
-	background:#cccccc url(silver-sub-bg.gif) repeat-y center left;
+	background:#cccccc url(../imagens/silver-sub-bg.gif) repeat-y center left;
 }
 .chataspusers ul :hover ul,.chataspusers ul .ajxover ul {
 	left:142px;
@@ -68,14 +68,14 @@
 	font:11px/11px Verdana,Arial,Helvetica,sans-serif;
 	text-decoration:none;
 	border:0;
-	color:#777777;
+	/*color:#777777;*/
 	background:#eeeeee url(../imagens/silver-sub.gif) no-repeat top left;
 }
 .chataspusers ul :hover ul .sfirst a,.chataspusers ul .ajxover ul .sfirst a {
 	margin-top:1px;
 }
 .chataspusers ul ul :hover a,.chataspusers ul ul .ajxover a {
-	color:#ffffff;
+	/*color:#ffffff;*/
 	background:#aaaaaa url(../imagens/silver-sub.gif) no-repeat bottom left;
 }
 .chataspusers br {

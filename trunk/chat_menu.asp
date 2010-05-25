@@ -1,5 +1,5 @@
 <!--#include file="chat_conecta.asp"-->
-<link href="chat_css.css" rel="stylesheet" type="text/css"> 
+<link href="css/chat_css.css" rel="stylesheet" type="text/css"> 
 <%
 dim apelido,cor,cor2,pra,reservado
 dim res1
@@ -70,7 +70,12 @@ function envia() {
           </tr>
           <tr> 
             <td width="14">&nbsp;</td>
-            <td width="612" height="25" align="left" valign="middle"><span class="texto_simples"><%=apelido%></span> 
+            <td width="612" height="25" align="left" valign="middle">
+			<span class="texto_simples">
+				<span style="color:#<%=cor%>">
+					<%=apelido%>
+				</span>
+			</span> 
               <select name="Acao" size="1" class="texto_simples" id="acao">
                 <%
 		  Dim Acao(22),i
@@ -101,7 +106,11 @@ For i = 1 To 19
 Next
 %>
               </select>
-              <span class="texto_simples"><%=pra%></span>
+			<span class="texto_simples">
+				<span style="color:#<%=cor2%>">
+					<%=pra%>
+				</span>
+			</span> 			  
               <input name="reservado" type="checkbox" value="true" <%=res1%> id="reservado">
               <span class="texto">Reservado</span></td>
             <td><input type="hidden" name="enviado" value="sim"></td>
