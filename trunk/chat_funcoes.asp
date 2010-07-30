@@ -78,7 +78,7 @@ end function
 
 Sub saida(apelido,cor)
 	dim sql
-	sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','"&cor&"','avisa','<font color=#"&cor&">"&apelido&"</font> saiu da sala',#"&Data2(now)&"#,true)"
+	sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','"&cor&"','avisa','<font color=""#"&cor&""">"&apelido&"</font> saiu da sala',#"&Data2(now)&"#,true)"
 	conn.execute(sql)
 end sub
 
