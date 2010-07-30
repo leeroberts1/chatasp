@@ -1,83 +1,25 @@
-<!--#include file="chat_conecta.asp" -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-	<meta http-equiv="refresh" content="5">
 	<title>CHATASP - Bate Papo</title>
 	<link href="css/chat_css.css" rel="stylesheet" type="text/css">
 	<script src="js/users.js" type="text/javascript"></script>
+	<script src="js/ajax.js" type="text/javascript"></script>
+	<script src="js/show_msg.js" type="text/javascript"></script>
 </head>
 <body>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td width="1%">&nbsp;</td>
     <td width="99%"> 
-	<span class="texto_simples">
-      <%
-	dim hora,sql,rs1
-	dim hora_ent
-	dim apelido
-	dim rs
-	dim de,para,act
-	dim x,x1,x2
-	dim msg
-	
-	hora = fun_hora()
-	sql="select * from chat_users where session_id="&session.SessionID
-	set rs1=conn.execute(sql)
-	if not rs1.eof then
-		hora_ent=rs1("hora_ent")
-		apelido=rs1("apelido")
-		sql="select * from chat_msg where hora between #"&cdate(FormataData(hora_ent))&"# and #"&cdate(data2(now))&"# order by hora,id desc"
-		set rs=conn.execute(sql)
-		if not rs.eof then
-		while not rs.eof
-			de="<font color=#"&rs("cor_de")&">"&rs("de_user")&"</font>"
-			para="<font color=#"&rs("cor_para")&">"&rs("para_user")&"</font> "
-			hora=right(rs("hora"),8)
-			act=rs("act")
-			if act="avisa" then 
-				x="avisa"
-			elseif act="comunica" then 
-				x="avisa2"
-			else
-				x="reservado"
-			end if
-	  		if act="grita com" then 
-			  x1="<font class=grita>"
-			  x2="</font>"
-	    	end if
-	  		msg=x1&"("&hora&") "& de &" "&act&" "& para &": "&rs("msg")&x2
-			x1=""
-			x2=""
-			response.write "<div>"&chr(13)
-			if rs("reservado")=true then
-				if rs("para_user")=replace(apelido," ","&nbsp;") or rs("para_user")="Todos" or rs("de_user")=apelido then
-					response.write "<div class="&x&">"&msg&"</div>"&chr(13)
-				end if
-			else
-				response.write msg&"<br>"
-			end if
-			response.write "</div>"&chr(13)
-		rs.movenext
-		response.Flush()
-		wend
-		end if
-		rs.close
-		set rs=nothing
-	else
-		response.write alerta("Não foi possivel determinar sua conexão...","chat_index.asp")
-	end if
-	rs1.close
-	set rs1=nothing
-	response.Flush()
-	%>
-    </span> </td>
+		<span class="texto_simples" id="chat_mensagens"></span>
+	</td>
   </tr>
 </table>
 <A NAME="MARCA"></A>
-<script language="javascript">rolagem();</script>
+<script language="javascript">
+	reset_form();
+</script>
 </body>
 </html>
-<!--#include file="chat_close.asp" -->

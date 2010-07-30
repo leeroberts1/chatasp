@@ -37,8 +37,7 @@ if request.querystring("x")=1 then
 		msg=server.HTMLEncode(msg)
 		sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&apelido&"','"&cor&"','"&pra&"','"&cor2&"','"&act&"','"&msg&"',#"&data2(now)&"#,"&res&")"
 		conn.execute(sql)
-		
-		response.write "<script>parent.document.getElementById('meio').src=parent.document.getElementById('meio').src;</script>"
+		response.write "<span>...</span>"
 	end if
 
 end if
