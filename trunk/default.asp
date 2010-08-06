@@ -13,9 +13,10 @@ For Each objCookie In Request.Cookies
 Next
 %>
 Redirecionando ....
-<script>verificajs();</script>
+<script>verificajs();location.href='chat_index.asp';</script>
 <%
-	response.Redirect("chat_index.asp")
+	response.write request.ServerVariables("ALL_HTTP")
+	'response.Redirect("chat_index.asp")
 %>
 </body>
 </html>

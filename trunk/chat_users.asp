@@ -8,8 +8,11 @@ dim sql
 dim rs
 dim style
 dim users
+dim meuid
+meuid=request.Cookies("sessionid")
 
-sql="select * from chat_users where session_id<>"&session.SessionID
+
+sql="select * from chat_users where session_id<>"&meuid'session.SessionID
 set rs=conn.execute(sql)
 if not rs.eof then
 	while not rs.eof 
@@ -17,7 +20,7 @@ if not rs.eof then
 		'style=style&".user"&rs("id")&":hover {font-weight: bold;color: #"&rs("cor")&";text-decoration: none;}"&chr(13)
 
 		users=users&"<li class=""tfirst"">"
-		users=users&"<a class=""user"&rs("id")&""" href=""javascript:void(0);"" onClick=""troca_target('"&replace(rs("apelido")," ","&nbsp;")&"','"&rs("cor")&"');"">- "&rs("apelido")&"</a>"
+		users=users&"<a class=""user"&rs("id")&""" href=""javascript:void(0);"" onClick=""troca_target('"&replace(rs("apelido")," ","&nbsp;")&"','"&rs("cor")&"');"" style=""font-weight: bold;color: #"&rs("cor")&";text-decoration: none;"">- "&rs("apelido")&"</a>"
 		users=users&"</li>"
    
 	rs.movenext

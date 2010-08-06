@@ -27,6 +27,9 @@ function makePOSTRequest(url, parameters, tipo) {
 				
 				result = http_request.responseText;
 				if(document.getElementById(tipo)){
+					if((tipo=="chat_mensagens")&&(result=="ERROR")){
+						parent.location.href='chat_sai.asp';
+					}
 					document.getElementById(tipo).innerHTML = result; 
 				}
 				tipo='';
