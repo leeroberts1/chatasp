@@ -1,8 +1,3 @@
-<%
-apelido=request("apelido")
-apelido=replace(apelido," ","&nbsp;")
-cor=request("cor")
-%>
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" align="center">
     <tr>
       
@@ -44,7 +39,7 @@ cor=request("cor")
    
 For i = 1 To 19
    Response.Write "<OPTION VALUE=" & replace(Acao(i)," ","&nbsp;")
-   Response.Write ">" & Acao(i) & Chr(13)
+   Response.Write ">" & replace(Acao(i)," ","&nbsp;") & Chr(13)
 Next
 %>
               </select>

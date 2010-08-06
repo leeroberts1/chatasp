@@ -1,6 +1,6 @@
 <!--#include file="chat_conecta.asp"-->
 <%
-
+Response.Charset = "ISO-8859-1"
 if request.querystring("x")=1 then
 
 	dim sql
@@ -11,8 +11,10 @@ if request.querystring("x")=1 then
 	dim res
 	dim msg
 	dim act
+	dim meuid
+	meuid=request.Cookies("sessionid")
 	
-	sql="update chat_users set hora_s=#"&fun_hora&"# where session_id="&session.SessionID
+	sql="update chat_users set hora_s=#"&fun_hora&"# where session_id="&meuid'session.SessionID
 	conn.execute(sql)
 
 	apelido=request.QueryString("apelido")
@@ -25,7 +27,7 @@ if request.querystring("x")=1 then
 	pra=replace(pra,"&nbsp;"," ")
 	res=replace(request.querystring("reservado"),"'","''")
 	msg=request.querystring("msg")
-	act=request.querystring("act")
+	act=replace(request.querystring("act"),"Â","")
 
 	if cor2="" then cor2="ff0000"
 	if len(pra)=0 then pra="Todos"

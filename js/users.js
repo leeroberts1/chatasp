@@ -7,10 +7,11 @@ function troca_target(para,cor2){
 }
 
 function rolagem(){
-	if(parent.document.getElementById('rolar').checked){
-  		location.hash = "MARCA"
-	}
-	
+	if(parent.document.getElementById('rolar')){
+		if(parent.document.getElementById('rolar').checked){
+			location.hash = "MARCA"
+		}
+	}	
 }
 
 function show_users(){
@@ -22,16 +23,20 @@ function reset_users(){
 }
 
 function rgbConvert(str) {
-	if(str.length==6){
-		return ('#'+str);
+	if(str.length==7){
+		return str;
 	}else{
-		str = str.replace(/rgb\(|\)/g, "").split(",");
-		str[0] = parseInt(str[0], 10).toString(16).toLowerCase();
-		str[1] = parseInt(str[1], 10).toString(16).toLowerCase();
-		str[2] = parseInt(str[2], 10).toString(16).toLowerCase();
-		str[0] = (str[0].length == 1) ? '0' + str[0] : str[0];
-		str[1] = (str[1].length == 1) ? '0' + str[1] : str[1];
-		str[2] = (str[2].length == 1) ? '0' + str[2] : str[2];
-		return ('#' + str.join(""));
+		if(str.length==6){
+			return ('#'+str);
+		}else{
+			str = str.replace(/rgb\(|\)/g, "").split(",");
+			str[0] = parseInt(str[0], 10).toString(16).toLowerCase();
+			str[1] = parseInt(str[1], 10).toString(16).toLowerCase();
+			str[2] = parseInt(str[2], 10).toString(16).toLowerCase();
+			str[0] = (str[0].length == 1) ? '0' + str[0] : str[0];
+			str[1] = (str[1].length == 1) ? '0' + str[1] : str[1];
+			str[2] = (str[2].length == 1) ? '0' + str[2] : str[2];
+			return ('#' + str.join(""));
+		}
 	}
 }

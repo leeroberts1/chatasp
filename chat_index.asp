@@ -33,7 +33,13 @@ if act=1 then
 		conn.execute(sql)
 		sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','ff0000','comunica','<font color=""#"&cor&""">"&apelido&"</font> entrou na sala',#"&data2(now)&"#,true)"
 		conn.execute(sql)
-		response.redirect "chat_jan.asp?apelido="&apelido&"&cor="&cor
+		response.Cookies("apelido")=apelido
+		response.Cookies("apelido").expires=now()+1
+		response.Cookies("cor")=cor
+		response.Cookies("cor").expires=now()+1
+		response.Cookies("sessionid")=session.SessionID
+		response.Cookies("sessionid").expires=now()+1
+		response.redirect "chat_jan.asp"
 	else
 		response.write alerta("O apelido selecionado ja está em uso")
 	end if
@@ -120,7 +126,7 @@ br{
 	<%
 	if request.Cookies("javascript")="" then 
 	%>
-	<div id="forms" class="texto_online">Cookies e Javascript devem estar habilitados para visualizar o formulário ou Talvez seu Navegador seje muito antigo ou incompativel.<br>Experimente usar outro.</div>
+  <div id="forms" class="texto_online">Cookies e Javascript devem estar habilitados para visualizar o formulário ou Talvez seu Navegador seje muito antigo ou incompativel.<br>Experimente usar outro.<br /><a href="default.asp">Voltar</a></div>
 	<%
 	else
 	%>

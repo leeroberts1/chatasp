@@ -11,8 +11,8 @@ dim rs
 dim style
 dim i 
 
-apelido=replace(request.querystring("apelido")," ","&nbsp;")
-cor=server.urlencode(request.querystring("cor"))
+apelido=replace(request.Cookies("apelido")," ","&nbsp;")
+cor=server.urlencode(request.Cookies("cor"))
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -44,10 +44,10 @@ cor=server.urlencode(request.querystring("cor"))
 	</table>    </td>
   </tr>
   <tr> 
-    <td width="84%" height="100%" valign="top"> <iframe frameborder="0" width="100%" height="100%" scrolling="yes" src="chat_msgs.asp" name="meio" id="meio" allowtransparency="true"></iframe> 
+    <td width="84%" height="100%" valign="top"> <iframe frameborder="1" width="100%" height="100%" scrolling="yes" src="chat_msgs.asp" name="meio" id="meio" allowtransparency="true"></iframe> 
     </td>
     <td width="170" valign="top"> 
-		<div id="users"></div>
+		<div id="users" style="height:420px;width:100%;overflow:auto"></div>
 	</td>
   </tr>
   

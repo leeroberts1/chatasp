@@ -78,8 +78,11 @@ end function
 
 Sub saida(apelido,cor)
 	dim sql
-	sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','"&cor&"','avisa','<font color=""#"&cor&""">"&apelido&"</font> saiu da sala',#"&Data2(now)&"#,true)"
+	sql="insert into chat_msg (de_user,cor_de,para_user,cor_para,act,msg,hora,reservado) values ('"&site&"','"&cor&"','Todos','FF0000','avisa','<font color=""#"&cor&""">"&apelido&"</font> saiu da sala',#"&Data2(now)&"#,true)"
 	conn.execute(sql)
+	response.Cookies("apelido")=""
+	response.Cookies("cor")=""
+	response.Cookies("sessionid")=""
 end sub
 
 function verifica(sessao)
@@ -87,7 +90,7 @@ function verifica(sessao)
 	sql="select * from chat_users where session_id="&sessao
 	set tm=conn.execute(sql)
 	if tm.eof then
-		response.write alerta("Você ficou muito tempo parado agora terá que se conectar de novo","chat_sai.asp")
+		response.redirect "chat_sai.asp"
 	end if
 	tm.close
 	set tm=nothing
